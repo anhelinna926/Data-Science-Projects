@@ -1,0 +1,21 @@
+# Import necessary libraries
+import pandas as pd
+import seaborn as sns
+
+# Load Titanic dataset
+titanic_df = sns.load_dataset('titanic')
+
+# TODO: Compute and print the mean, median, and mode of passenger's age
+mean_age = titanic_df['age'].mean()
+print(f"Mean age: {mean_age}")
+median_age = titanic_df['age'].median()
+print(f"Median age: {median_age}")
+mode_age = titanic_df['age'].mode()
+print(f"Mode age: {mode_age}")
+
+# Import Numpy
+import numpy as np
+
+# TODO: Compute and print the standard deviation of the ages
+std_dev_age =np.std(titanic_df['age'])
+print(f"Standard deviation of age: {std_dev_age}")

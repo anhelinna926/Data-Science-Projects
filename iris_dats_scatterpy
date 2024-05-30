@@ -1,0 +1,26 @@
+# necessary imports
+import numpy as np
+from sklearn import decomposition
+from sklearn import datasets
+import matplotlib.pyplot as plt
+
+# load iris dataset
+iris = datasets.load_iris()
+X = iris.data
+
+# TODO: Define the functional implementation of ICA 
+def perform_ica(X, n_components):
+    X = (X - X.mean(axis=0)) / X.std(axis=0)
+    ica = decomposition.FastICA(n_components=n_components, whiten='unit-variance')
+    X_transformed = ica.fit_transform(X)
+    return X_transformed
+# TODO: Define a function to visualize the first two independent components after ICA 
+def visualize_ica(X_transformed):
+        fig, ax = plt.subplots()
+for color, i, target_name in zip(['navy', 'red', 'green'], [0, 1, 2], iris.target_names):
+     ax.scatter(X_transformed[iris.target == i, 0], X_transformed[iris.target== i, 1], color=color, s=100, lw=2, label=target_name)
+ax.legend(loc='best', shadow=False, scatterpoints=1)   
+ax.set_title('ICA of IRIS datasset')
+# Perform ICA and visualize the results
+X_transformed = perform_ica(X, 3) # function you should define as TODO above
+visualize_ica(X_transformed) # function you should define as TODO above
